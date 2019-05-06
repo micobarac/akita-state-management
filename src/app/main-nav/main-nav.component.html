@@ -1,0 +1,37 @@
+<div class="container">
+  <ul id="dropdown" class="dropdown-content" *showIfLoggedIn="true">
+    <li><a (click)="logout()">Logout</a></li>
+  </ul>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo" routerLink="home" routerLinkActive="active">Akita</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li *ngFor="let module of modules" routerLinkActive="active">
+          <a [routerLink]="module.link" *showIfLoggedIn="true">{{ module.title }}</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="dashboard">Dashboard</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="contacts">Contacts</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="todos">Todos</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="movies">Movies</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="products">Products</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="cart">Cart <span class="new badge">{{ count$ | async }}</span></a>
+        </li>
+        <li *showIfLogin="false"><a *showIfLoggedIn="false" routerLink="login"
+            class="waves-effect waves-light btn">Login</a></li>
+        <li *showIfLoggedIn="true"><a #dropdown class="dropdown-trigger" data-target="dropdown">Welcome,
+            {{ name$ | async}}!<i class="material-icons right">arrow_drop_down</i></a></li>
+      </ul>
+    </div>
+  </nav>
+</div>

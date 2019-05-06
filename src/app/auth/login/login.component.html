@@ -1,0 +1,30 @@
+<div class="container">
+  <h4>
+    Login
+  </h4>
+  <h5>
+    Please login to continue
+  </h5>
+  <div class="content">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" type="email" formControlName="email">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input class="input" type="password" formControlName="password">
+        </div>
+      </div>
+
+      <div class="control">
+        <button class="btn waves-effect waves-light" type="submit">Submit</button>
+      </div>
+
+    </form>
+  </div>
+</div>

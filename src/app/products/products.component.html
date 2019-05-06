@@ -1,0 +1,50 @@
+<div class="container">
+  <h4>
+    Products
+  </h4>
+  <h6>
+    Welcome to products
+  </h6>
+  <div class="content">
+
+    <h6 class="grey-text flex align-center">
+      <i class="material-icons">view_list</i>
+      Products
+    </h6>
+
+    <ng-container *ngIf="!(loading$ | async); else loadingTpl">
+
+      <!--Sorting-->
+      <div class="col s12">
+        <label>Sort by</label>
+        <select class="browser-default" [formControl]="sort">
+          <option value="title">Name</option>
+          <option value="price">Price</option>
+        </select>
+      </div>
+
+      <!--Search Input-->
+      <div class="input-field">
+        <i class="material-icons prefix">search</i>
+        <input placeholder="Search Product.." [formControl]="search">
+      </div>
+
+
+      <!--Products List-->
+      <div class="mt flex">
+        <app-product *ngFor="let product of (products$ | async)" (add)="add($event)" (subtract)="subtract($event)"
+          [product]="product">
+        </app-product>
+      </div>
+
+    </ng-container>
+
+    <!--Spinner-->
+    <ng-template #loadingTpl>
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
